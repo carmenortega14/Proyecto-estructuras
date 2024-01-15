@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>taskList</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <script src="../js/taskList.js"></script>
+    <link rel="stylesheet" href="../css/taskManager.css" />
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <br>
+            <div class="col-md-12">
+                <div class="row Space">
+                    <ul class="nav nav-tabs navTitle">
+                        <li class="active"><a href="taskList.html">Lista de tareas</a></li>
+                        <li><a href="addTask.html">Agregar tarea</a></li>
+                        <li><a href="#">Notas</a></li>
+                    </ul>
+                </div>
+
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="glyphicon glyphicon-tasks" aria-hidden="true" style="font-size: 160%"> </span>
+                        <span style="font-size: 180%">Table List</span>
+
+                        <br>
+                        <br>
+                        <table class="table table-hover text-center " id="listTable" style="font-size: 135%;">
+                            <tr>
+                                <th class="text-center">Operación</th>
+                                <th class="text-center">Numero</th>
+                                <th class="text-center">FechaLimite</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Tiempo restante</th>
+                                <th class="text-center">Descripción</th>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-primary my-button" style="font-size: 120%;" id="modifyButton"
+                                title="Waring" data-container="body" data-toggle="popover" data-placement="bottom"
+                                data-content="Hasn't select line!" onclick=modify()>
+                                Modificar
+                            </button>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-primary my-button " style="font-size: 120%" id="deleteButton"
+                                onclick=deleteButton()>
+                                Borrar
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Tips</h4>
+                </div>
+                <div class="modal-body" id="tipText">123</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel2">Tips</h4>
+                </div>
+                <div class="modal-body" id="tipText2">132</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrrar</button>
+                    <button type="button" class="btn btn-primary" onclick=deleteRow()>OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modifyModalLabel">Modificar tarea</h4>
+                </div>
+                <div class="modal-body" id="modifyTipText">
+                    <div class="container">
+                        <div class="row">
+                            <form class="form-horizontal " action="../php/addTask.php" method="post">
+                                <div class="form-group" id="inputDDLGroup">
+                                    <label class="col-sm-1 control-label ">Fecha</label>
+                                    <div class="col-sm-4">
+                                        <input type="date" name="taskDDL" id="inputDDL" class="form-control myInput"
+                                            title="DeadLine">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="inputTimeGroup">
+                                    <label class="col-sm-1 control-label ">Hora</label>
+                                    <div class="col-sm-4">
+                                        <input type="time" name="taskTime" id="inputTime" class="form-control myInput"
+                                            title="DeadLine">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="inputNameGroup">
+                                    <label class="col-sm-1 control-label ">Nombre tarea</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="taskName" id="inputTaskName"
+                                            class="form-control myInput" title="taskName">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label ">Descripción</label>
+                                    <div class="col-sm-4">
+                                        <textarea name="taskDescription" class="form-control myText"
+                                            id="inputDescription" rows="10" title="Description"></textarea>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick=modifyDatabase()>Modificar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+</body>
+
+</html>

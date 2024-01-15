@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Define la codificación de caracteres a UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Especifica la compatibilidad con Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Configura la vista adaptable en dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Título de la página -->
+    <title>addTask</title>
+
+    <!-- Enlaces a archivos JavaScript -->
+
+    <!-- Carga la librería jQuery desde un CDN -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Carga un archivo bootstrap.js desde una carpeta js -->
+    <script src="../js/bootstrap.js"></script>
+    <!-- Carga el archivo addTask.js desde una carpeta js -->
+    <script src="../js/addTask.js"></script>
+
+    <!-- Enlaces a archivos CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/taskManager.css" />
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <br> <!-- Salto de línea -->
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="row Space">
+                    <!-- Barra de pestañas -->
+                    <ul class="nav nav-tabs navTitle">
+                        <li><a href="taskList.html">Lista de tareas</a></li>
+                        <li class="active"><a href="addTask.html">Agregar tarea</a></li>
+                        <li><a href="#">Notas</a></li>
+                    </ul>
+                </div>
+
+                <br> <!-- Salto de línea -->
+
+                <!-- Formulario para añadir tarea -->
+                <div class="row">
+                    <div class="container">
+                        <div class="row addTaskPage">
+                            <form class="form-horizontal" action="../php/addTask.php" method="post">
+                                <!-- Campo para la fecha de la tarea -->
+                                <div class="form-group" id="inputDDLGroup">
+                                    <label class="col-sm-2 control-label">Fecha</label>
+                                    <div class="col-sm-4">
+                                        <input type="date" name="taskDDL" id="inputDDL" class="form-control myInput"
+                                            title="DeadLine">
+                                    </div>
+                                </div>
+
+                                <!-- Campo para la hora de la tarea -->
+                                <div class="form-group" id="inputTimeGroup">
+                                    <label class="col-sm-2 control-label">Hora</label>
+                                    <div class="col-sm-4">
+                                        <input type="time" name="taskTime" id="inputTime" class="form-control myInput"
+                                            title="DeadLine">
+                                    </div>
+                                </div>
+
+                                <!-- Campo para el nombre de la tarea -->
+                                <div class="form-group" id="inputNameGroup">
+                                    <label class="col-sm-2 control-label">Nobre de tarea</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="taskName" id="inputTaskName"
+                                            class="form-control myInput" title="taskName">
+                                    </div>
+                                </div>
+
+                                <!-- Campo para la descripción de la tarea -->
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Descripción</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="taskDescription" class="form-control myText"
+                                            id="inputDescription" rows="10" title="Description"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Botones para agregar tarea y limpiar campos -->
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-2">
+                                        <button type="button" class="btn btn-primary my-button" style="font-size: 100%"
+                                            onclick=submitInput()>AgregarT</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn btn-primary my-button" style="font-size: 100%"
+                                            onclick=clearInput()>Limpiar</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar consejos o tips -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Tips</h4>
+                </div>
+                <div class="modal-body" id="tipText">123</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</body>
+
+
+</html>

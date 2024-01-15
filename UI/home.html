@@ -1,0 +1,226 @@
+<!-- Declaración del tipo de documento como HTML5 -->
+<!DOCTYPE html>
+
+<!-- Inicio del documento HTML con el idioma predeterminado establecido en inglés -->
+<html lang="en">
+
+<!-- Inicio de la sección de metadatos y configuraciones del documento -->
+<head>
+
+    <!-- Configuración del conjunto de caracteres UTF-8 para el documento -->
+    <meta charset="UTF-8">
+
+    <!-- Establecimiento de la compatibilidad con versiones recientes de Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Configuración para la correcta visualización en dispositivos móviles y de escritorio -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>taskList</title>
+
+    <!-- Enlace a una hoja de estilo CSS de Bootstrap para aplicar estilos -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <!-- Enlace al archivo JavaScript de la biblioteca jQuery alojada en un CDN -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Enlace al archivo JavaScript de Bootstrap para funcionalidades específicas -->
+    <script src="../js/bootstrap.js"></script>
+
+    <!-- Enlace al archivo JavaScript local 'home.js' con código personalizado -->
+    <script src="../js/home.js"></script>
+
+    <!-- Enlace a una hoja de estilo CSS adicional llamada 'taskManager.css' -->
+    <link rel="stylesheet" href="../css/taskManager.css" />
+</head>
+
+<body>
+
+    <!-- Inicio del contenedor fluido -->
+    <div class="container-fluid">
+
+        <!-- Comienza una fila con clase "fullScreen" -->
+        <div class="row fullScreen">
+
+            <!-- Columna de ancho grande (large) 2 en un diseño de grilla de Bootstrap, con clase "sidebar" y "fullScreen" y con un identificador "sidebar" -->
+            <div class="col-lg-2 sidebar fullScreen" id="sidebar">
+
+                <!-- División con estilo personalizado, centrado de texto y un espacio superior de 20px -->
+                <div style="padding-top: 20px" class="text-center">
+
+                     <!-- Ícono con clase glyphicon y estilo de tamaño y color -->
+                    <span class="glyphicon glyphicon-fire" aria-hidden="true" style="color:#EFEFEF; font-size: 25px;">
+                    </span>
+
+                    <!-- Texto con estilo de tamaño y color -->
+                    <span style="color:#AFAFAF; font-size: 25px;">GestorDeTareas</span>
+                </div>
+
+                <!-- División con un espacio superior de 30px -->
+                <div style="padding-top: 30px">
+
+                     <!-- Párrafo con estilo de tamaño y color -->
+                    <p style="font-size: 18px; color: #EFEFEF;">
+
+                        <!-- Ícono de usuario con estilo de tamaño y color -->
+                        <span class=" glyphicon glyphicon-user" aria-hidden="true"
+                            style="color:#AFAFAF; font-size: 20px;"></span>
+
+                        <!-- Nombre de usuario con estilo de tamaño y color, identificado por un identificador "userName" -->
+                        <span style="color:#AFAFAF; font-size: 20px;" id="userName"></span>
+                    </p>
+                </div>
+
+                <!-- Lista de contenedores -->
+                <p class="text-center" style="font-size: 20px; padding-top: 20px; color:#CFCFCF;">
+                    Container List
+                </p>
+                <hr>
+
+                <!-- Lista de navegación vertical con píldoras y un identificador "containerBar" -->
+                <div id="containerList">
+                    <ul class="nav nav-pills nav-stacked" style="font-size: 17px;" id="containerBar">
+                    </ul>
+                </div>
+
+                <!-- Botones para agregar y eliminar contenedores -->
+                <div class="row" style="padding-top: 20px;">
+                    
+                    <!-- Botón para agregar contenedores -->
+                    <div class="col-sm-6">
+                        <button class="btn btn-success" style="width: 100px;" onclick=addContainer()>Agregar</button>
+                    </div>
+
+                    <!-- Botón para eliminar contenedores -->
+                    <div class="col-sm-6">
+                        <button class="btn btn-success" style="width: 100px;" onclick=deleteContainer()>Borrar</button>
+                    </div>
+
+                     <!-- Botón de cierre de sesión en la parte inferior -->
+                    <div class="footer" style="position: absolute; bottom: 20px; left: 0; right: 0;">
+                        <div class="text-center">
+                            <button class="btn btn-danger" style="width: 120px;" onclick="signOut()">Cerrar
+                                Sesión</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido inferior -->
+                <div class="footer">
+                    <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+                    copyright©CarmenLuciaOrtega
+                </div>
+
+            </div>
+
+             <!-- Columna de ancho grande (large) 10 en un diseño de grilla de Bootstrap, con clase "fullScreen" y un identificador "workspace" -->
+            <div class="col-lg-10 fullScreen" id="workspace">
+
+                <!-- Iframe para visualización de contenido -->
+                <iframe style="position:absolute; left:0; top:0; height:100%; width:100%;" src="" id="iframe-manage"
+                    name="iframe-manage" frameborder="0">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Primer modal -->
+
+    <!-- Modal con identificador "myModal" -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        
+        <!-- Contenedor para el modal -->
+        <div class="modal-dialog">
+
+            <!-- Contenido del modal -->
+            <div class="modal-content">
+
+                <!-- Encabezado del modal -->
+                <div class="modal-header">
+
+                    <!-- Botón de cierre del modal -->
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <!-- Título del modal -->
+                    <h4 class="modal-title" id="myModalLabel">Tips</h4>
+                </div>
+
+                <!-- Cuerpo del modal con un contenido inicial -->
+                <div class="modal-body" id="tipText">123</div>
+                <div class="modal-footer">
+                    
+                    <!-- Botón para cerrar el modal -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    
+                    <!-- Botón de confirmación OK -->
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+    <!-- Segundo modal -->
+
+    <!-- Modal con identificador "addContainerModal" -->
+    <div class="modal fade" id="addContainerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <!-- Botón de cierre del modal -->
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <!-- Título del modal -->
+                    <h4 class="modal-title">AgrgarContenedor</h4>
+                </div>
+                <div class="modal-body">
+
+                      <!-- Formulario con estilo horizontal -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="containerName" class="col-sm-3 control-label">NombreContenedor:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="containerName"
+                                    placeholder="Nombre del contenedor">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        onclick=addContainerToDatabase()>OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    
+    <!-- Tercer modal -->
+
+    <!-- Modal con identificador "deleteContainerModal" -->
+    <div class="modal fade" id="deleteContainerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="deleteContainerLabel">Tips</h4>
+                </div>
+                <div class="modal-body" id="deleteContainerTipText">123</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        onclick=deleteContainerinDatabase()>OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+</body>
+
+</html>

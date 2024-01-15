@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/login.js"></script>
+
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/taskManager.css"/>
+
+</head>
+<body>
+
+<div class="container-fluid" id="screen" >
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-12" id="workspace">
+            <ul class="nav nav-tabs nav-pills">
+                <li class="active">
+                    <a data-toggle="tab" href="#login" style="font-size: 22px">Login</a>
+                </li>
+
+                <li>
+                    <a data-toggle="tab" href="#und-reg"  style="font-size: 22px">Registro</a>
+                </li>
+
+            </ul>
+
+            <div class="tab-content" style="padding-top: 25px;">
+                <!-- Login panel -->
+
+                <div id="login" class="tab-pane fade in active">
+
+                    <form role="form" >
+                        <div class="form-group" id="loginEmailGroup">
+                            <label style="color:#AFAFAF; font-size: 16px">email</label>
+                            <input id="loginEmail" type="text" class="form-control" name="userid" maxlength="64" title=""
+                                   style="background-color: #2c2c32; color: #EFEFEF;"/>
+                        </div>
+
+                        <div class="form-group" id="loginPasswordGroup">
+                            <label style="color:#AFAFAF; font-size: 16px">Contraseña</label>
+                            <input id="loginPassword" type="password" class="form-control" name="password" maxlength="64" title=""
+                                   style="background-color: #2c2c32; color: #EFEFEF;"/>
+                        </div>
+
+                        <button type="button" class="btn btn-primary " style="font-size: 16px" onclick=login()>Ingresar</button>
+
+                    </form>
+                </div>
+
+                <div id="und-reg" class="tab-pane fade">
+
+                    <form role="form" >
+                        <div class="form-group" id="registerNameGroup">
+                            <label style="color:#AFAFAF; font-size: 16px">Nombre</label>
+                            <input id="registerName" type="text" class="form-control" name="userid" maxlength="64" title=""
+                                   style="background-color: #2c2c32; color: #EFEFEF;"/>
+                        </div>
+
+                        <div class="form-group" id="registerEmailGroup">
+                            <label style="color:#AFAFAF; font-size: 16px">Email</label>
+                            <input id="registerEmail" type="email" class="form-control" name="authpass" title=""
+                                   style="background-color: #2c2c32; color: #EFEFEF;"/>
+                        </div>
+
+                        <div class="form-group" id="registerPasswordGroup">
+                            <label style="color:#AFAFAF; font-size: 16px">Contraseña</label>
+                            <input id="registerPassword" type="password" class="form-control" name="loginpass" maxlength="64" title=""
+                                   style="background-color: #2c2c32; color: #EFEFEF;"/>
+                        </div>
+
+                        <div class="form-group" id="registerPasswordGroup2">
+                            <label style="color:#AFAFAF; font-size: 16px">Confirmar Contraseña</label>
+                            <input id="registerPassword2" type="password" class="form-control" name="confirm" maxlength="64" title=""
+                                   style="background-color: #2c2c32; color: #EFEFEF;"/>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" style="font-size: 16px" onclick=register()>Registrar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true" style="font-size: 16px;"></span>
+        <span style="font-size: 16px;">copyright©CarmenLuciaOrtega</span>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Tips</h4>
+            </div>
+            <div class="modal-body" id="tipText">123</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+</body>
+</html>

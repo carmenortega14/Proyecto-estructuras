@@ -1,0 +1,62 @@
+body{
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+}
+
+.navTitle {
+    color: #00CDCD;
+    font-size: 200%;
+    padding-top: 6px;
+}
+
+.Space {
+    padding :20px;
+}
+
+.addTaskPage {
+    font-size: 130%;
+}
+
+.myText {
+    font-size: 20px;
+}
+
+.myInput {
+    font-size: 18px;
+}
+
+
+iframe {
+    min-height: 700px;
+}
+
+.my-button {
+    width: 100px;
+}
+
+th {
+    background-color: #1f1f1f;
+    color: #e7e7e7;
+}
+
+td {
+    height: 45px;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    color: #CFCFCF;
+    padding-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #2c2c32;
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #CFCFCF;
+}
